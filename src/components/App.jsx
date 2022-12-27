@@ -64,11 +64,9 @@ export class App extends Component {
   };
 
   handleItemClick = largeImageURL => {
-    const modalImage = this.state.images.find(
-      image => image.largeImageURL === largeImageURL
-    );
+
     this.setState({
-      modalImageURL: modalImage.largeImageURL,
+      modalImageURL: largeImageURL,
       showModal: true,
     });
   };
@@ -100,9 +98,9 @@ export class App extends Component {
 
         <ImageGallery images={images} onClick={this.handleItemClick} />
 
-        {totalHits > images.length ? (
+        {totalHits > images.length && (
           <LoadMore onClick={this.loadMore} />
-        ) : null}
+        )}
 
         <ToastContainer autoClose={3000} theme="colored" />
         {showModal ? (
